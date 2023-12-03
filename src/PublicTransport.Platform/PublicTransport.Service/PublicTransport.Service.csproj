@@ -6,6 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+	<ItemGroup>
+		<PackageReference Include="MediatR" Version="11.0.0" />
+		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.14" />
+	</ItemGroup>
+	
   <ItemGroup>
     <ProjectReference Include="..\PublicTransport.Domain\PublicTransport.Domain.csproj" />
   </ItemGroup>
