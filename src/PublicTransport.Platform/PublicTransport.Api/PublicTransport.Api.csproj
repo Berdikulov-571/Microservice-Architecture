@@ -18,4 +18,9 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PublicTransport.DataAccess\PublicTransport.DataAccess.csproj" />
+    <ProjectReference Include="..\PublicTransport.Service\PublicTransport.Service.csproj" />
+  </ItemGroup>
+
 </Project>
