@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PublicTransport.Service\PublicTransport.Service.csproj" />
+  </ItemGroup>
+
 </Project>

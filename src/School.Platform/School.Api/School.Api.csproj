@@ -18,4 +18,9 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\School.DataAccess\School.DataAccess.csproj" />
+    <ProjectReference Include="..\School.Service\School.Service.csproj" />
+  </ItemGroup>
+
 </Project>
