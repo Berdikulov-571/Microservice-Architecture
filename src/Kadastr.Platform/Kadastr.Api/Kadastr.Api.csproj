@@ -18,4 +18,9 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Kadastr.DataAccess\Kadastr.DataAccess.csproj" />
+    <ProjectReference Include="..\Kadastr.Service\Kadastr.Service.csproj" />
+  </ItemGroup>
+
 </Project>
