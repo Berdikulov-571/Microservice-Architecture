@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using School.Domain.Dtos.Teachers;
 
 namespace School.Service.Abstractions.UseCases.Teachers.Commands.Update
 {
-    internal class UpdateTeacherCommand
+    public class UpdateTeacherCommand : TeacherUpdateDto, IRequest<int>
     {
+
     }
 }
