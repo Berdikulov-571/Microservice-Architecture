@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using School.DataAccess.Persistence.DataContexts;
-using School.Service.Abstractions.IDataAccess;
+using School.Service.Abstractions.DataAccess;
 
 namespace School.DataAccess
 {
