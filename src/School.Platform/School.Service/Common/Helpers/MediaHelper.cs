@@ -1,4 +1,6 @@
-﻿namespace School.Service.Common.Helpers
+﻿using School.Domain.Exceptions.Image;
+
+namespace School.Service.Common.Helpers
 {
     public class MediaHelper
     {
@@ -14,7 +16,7 @@
                 string name = "IMG_" + Guid.NewGuid() + extension;
                 return name;
             }
-            return null;
+            throw new ImageNotValid();
         }
 
         public static string[] GetImageExtensions()
