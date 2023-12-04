@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using School.Domain.Entities.Teachers;
 
 namespace School.Service.Abstractions.UseCases.Teachers.Queries.Get
 {
-    internal class GetTeacherByIdQuery
+    public class GetTeacherByIdQuery : IRequest<Teacher>
     {
+        public int TeacherId { get; set; }
     }
 }
