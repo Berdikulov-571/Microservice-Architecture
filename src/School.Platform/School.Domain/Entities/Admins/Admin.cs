@@ -11,5 +11,6 @@ namespace School.Domain.Entities.Admins
         public string PasswordHash { get; set; }
         public string Email { get; set; }
         public Role Role { get; set; }
+        public string ImagePath { get; set; }
     }
 }
