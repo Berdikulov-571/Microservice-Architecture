@@ -1,3 +1,6 @@
+using School.DataAccess;
+using School.Service;
+
 namespace School.Api
 {
     public class Program
@@ -9,6 +12,9 @@ namespace School.Api
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddService();
+            builder.Services.AddDataAccess(builder.Configuration);
 
             WebApplication app = builder.Build();
 
