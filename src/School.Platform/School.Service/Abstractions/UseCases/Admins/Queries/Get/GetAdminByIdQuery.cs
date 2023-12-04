@@ -8,4 +8,3 @@ namespace School.Service.Abstractions.UseCases.Admins.Queries.Get
         public int AdminId { get; set; }
     }
 }
-
