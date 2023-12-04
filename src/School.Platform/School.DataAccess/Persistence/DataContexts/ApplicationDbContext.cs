@@ -8,7 +8,7 @@ using School.Domain.Entities.Subjects;
 using School.Domain.Entities.Task;
 using School.Domain.Entities.Teachers;
 using School.Domain.Entities.TeacherSubjectRelation;
-using School.Service.Abstractions.IDataAccess;
+using School.Service.Abstractions.DataAccess;
 
 namespace School.DataAccess.Persistence.DataContexts
 {
