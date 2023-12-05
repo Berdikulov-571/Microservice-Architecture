@@ -20,7 +20,7 @@ namespace School.Api.Controllers.Teachers
         }
 
         [HttpPost]
-        public async ValueTask<IActionResult> PostAsync([FromForm]CreateTeacherCommand teacher)
+        public async ValueTask<IActionResult> PostAsync([FromForm] CreateTeacherCommand teacher)
         {
             int result = await _mediator.Send(teacher);
 
@@ -52,11 +52,19 @@ namespace School.Api.Controllers.Teachers
         }
 
         [HttpPut]
-        public async ValueTask<IActionResult> UpdateAsync([FromForm]UpdateTeacherCommand teacher)
+        public async ValueTask<IActionResult> UpdateAsync([FromForm] UpdateTeacherCommand teacher)
         {
             int result = await _mediator.Send(teacher);
 
             return Ok(result);
+        }
+
+        [HttpGet]
+        public async ValueTask<FileContentResult> GetImageAsync(int teacherId)
+        {
+            byte[] image = await _mediator.Send(new GetTeacherImageQuery() { TeacherId = teacherId});
+
+            return File(image, "image/png");
         }
     }
 }
