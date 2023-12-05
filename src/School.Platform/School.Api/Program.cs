@@ -1,5 +1,6 @@
 using School.DataAccess;
 using School.Service;
+using System.Text.Json.Serialization;
 
 namespace School.Api
 {
@@ -15,6 +16,8 @@ namespace School.Api
 
             builder.Services.AddService();
             builder.Services.AddDataAccess(builder.Configuration);
+            builder.Services.AddControllersWithViews()
+                .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
             WebApplication app = builder.Build();
 
