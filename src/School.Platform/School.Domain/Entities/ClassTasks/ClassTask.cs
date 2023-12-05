@@ -1,5 +1,4 @@
-﻿using School.Domain.Entities.Classes;
-using School.Domain.Entities.Task;
+﻿using School.Domain.Entities.Task;
 using School.Domain.Entities.Teachers;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -14,6 +13,6 @@ namespace School.Domain.Entities.ClassTasks
         public int TaskId { get; set; }
         public Teacher Teacher { get; set; }
         public Tasks Task { get; set; }
-        public DateTime Day { get; set; } = DateTime.Now;
+        public string Day { get; set; } = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
     }
 }

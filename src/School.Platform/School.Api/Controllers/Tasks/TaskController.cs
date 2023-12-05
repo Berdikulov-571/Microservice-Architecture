@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using School.Service.Abstractions.UseCases.Tasks.Commands.Create;
-using School.Service.Abstractions.UseCases.Tasks.Commands.Delete;
-using School.Service.Abstractions.UseCases.Tasks.Commands.Update;
-using School.Service.Abstractions.UseCases.Tasks.Queries.Get;
+using School.Service.UseCases.Tasks.Commands.Create;
+using School.Service.UseCases.Tasks.Commands.Delete;
+using School.Service.UseCases.Tasks.Commands.Update;
+using School.Service.UseCases.Tasks.Queries.Get;
 
 namespace School.Api.Controllers.Tasks
 {

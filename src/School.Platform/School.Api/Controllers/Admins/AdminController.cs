@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using School.Domain.Entities.Admins;
-using School.Service.Abstractions.UseCases.Admins.Commands.Create;
-using School.Service.Abstractions.UseCases.Admins.Commands.Delete;
-using School.Service.Abstractions.UseCases.Admins.Commands.Update;
-using School.Service.Abstractions.UseCases.Admins.Queries.Get;
+using School.Service.UseCases.Admins.Commands.Create;
+using School.Service.UseCases.Admins.Commands.Delete;
+using School.Service.UseCases.Admins.Commands.Update;
+using School.Service.UseCases.Admins.Queries.Get;
 
 namespace School.Api.Controllers.Admins
 {
