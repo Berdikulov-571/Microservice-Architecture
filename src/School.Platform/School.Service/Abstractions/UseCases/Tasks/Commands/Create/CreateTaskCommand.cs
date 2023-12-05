@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using School.Domain.Dtos.Task;
 
 namespace School.Service.Abstractions.UseCases.Tasks.Commands.Create
 {
-    internal class CreateTaskCommand
+    public class CreateTaskCommand : TasksCreateDto, IRequest<int>
     {
+
     }
 }
