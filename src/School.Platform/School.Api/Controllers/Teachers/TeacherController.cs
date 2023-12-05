@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using School.Domain.Entities.Teachers;
-using School.Service.Abstractions.UseCases.Teachers.Commands.Create;
-using School.Service.Abstractions.UseCases.Teachers.Commands.Delete;
-using School.Service.Abstractions.UseCases.Teachers.Commands.Update;
-using School.Service.Abstractions.UseCases.Teachers.Queries.Get;
+using School.Service.UseCases.Teachers.Commands.Create;
+using School.Service.UseCases.Teachers.Commands.Delete;
+using School.Service.UseCases.Teachers.Commands.Update;
+using School.Service.UseCases.Teachers.Queries.Get;
 
 namespace School.Api.Controllers.Teachers
 {
