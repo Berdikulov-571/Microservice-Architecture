@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using School.DataAccess.Persistence.DataContexts;
 
@@ -11,9 +12,11 @@ using School.DataAccess.Persistence.DataContexts;
 namespace School.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231205141049_Four")]
+    partial class Four
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -225,7 +228,12 @@ namespace School.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("TeacherId")
+                        .HasColumnType("int");
+
                     b.HasKey("SubjectId");
+
+                    b.HasIndex("TeacherId");
 
                     b.ToTable("Subjects");
                 });
@@ -388,6 +396,13 @@ namespace School.DataAccess.Migrations
                     b.Navigation("Class");
                 });
 
+            modelBuilder.Entity("School.Domain.Entities.Subjects.Subject", b =>
+                {
+                    b.HasOne("School.Domain.Entities.Teachers.Teacher", null)
+                        .WithMany("Subjects")
+                        .HasForeignKey("TeacherId");
+                });
+
             modelBuilder.Entity("School.Domain.Entities.TeacherSubjectRelation.TeacherSubjects", b =>
                 {
                     b.HasOne("School.Domain.Entities.Subjects.Subject", "Subject")
@@ -397,7 +412,7 @@ namespace School.DataAccess.Migrations
                         .IsRequired();
 
                     b.HasOne("School.Domain.Entities.Teachers.Teacher", "Teacher")
-                        .WithMany("TeacherSubjects")
+                        .WithMany()
                         .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -421,7 +436,7 @@ namespace School.DataAccess.Migrations
                 {
                     b.Navigation("ClassTasks");
 
-                    b.Navigation("TeacherSubjects");
+                    b.Navigation("Subjects");
                 });
 #pragma warning restore 612, 618
         }
