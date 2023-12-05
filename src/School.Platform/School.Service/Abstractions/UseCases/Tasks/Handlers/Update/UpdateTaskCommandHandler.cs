@@ -1,12 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
+using School.Domain.Exceptions.Task;
+using School.Service.Abstractions.DataAccess;
+using School.Service.Abstractions.UseCases.Tasks.Commands.Update;
 
 namespace School.Service.Abstractions.UseCases.Tasks.Handlers.Update
 {
-    internal class UpdateTaskCommandHandler
+    public class UpdateTaskCommandHandler : IRequestHandler<UpdateTaskCommand, int>
     {
+        private readonly IApplicationDbContext _context;
+
+        public UpdateTaskCommandHandler(IApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<int> Handle(UpdateTaskCommand request, CancellationToken cancellationToken)
+        {
+            School.Domain.Entities.Task.Tasks? task = await _context.Tasks.FirstOrDefaultAsync(x => x.TaskId == request.TaskId,cancellationToken);
+
+            if (task == null)
+                throw new TaskNotFound();
+
+            task.Description = request.Description;
+            task.UpdatedAt = DateTime.Now;
+
+            _context.Tasks.Update(task);
+            int result = await _context.SaveChangesAsync(cancellationToken);
+
+            return result;
+        }
     }
 }
