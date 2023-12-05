@@ -67,5 +67,13 @@ namespace School.Api.Controllers.Admins
 
             return Ok(result);
         }
+
+        [HttpGet]
+        public async ValueTask<FileContentResult> GetImageAsync(int adminId)
+        {
+            byte[] image = await _mediator.Send(new GetAdminImageQuery() { AdminId = adminId});
+
+            return File(image, "image/png");
+        }
     }
 }
