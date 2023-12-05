@@ -2,14 +2,14 @@
 
 namespace School.Domain.Exceptions.GlobalExceptions.AlreadyExistsExceptions
 {
-    public class PhoneNumberAlreadyExistsException : Exception
+    public class TeacherAlreadyExistsException : Exception
     {
         private HttpStatusCode StatusCode { get; } = HttpStatusCode.Forbidden;
         private string TitleMessage { get; set; } = default!;
 
-        public PhoneNumberAlreadyExistsException()
+        public TeacherAlreadyExistsException()
         {
-            TitleMessage = "This PhoneNumber Already Exists !";
+            TitleMessage = "This Teacher Already Exists !";
         }
     }
 }

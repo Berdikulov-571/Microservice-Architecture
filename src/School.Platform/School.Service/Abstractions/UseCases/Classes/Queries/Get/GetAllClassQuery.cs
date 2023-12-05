@@ -1,6 +1,10 @@
-﻿namespace School.Service.Abstractions.UseCases.Classes.Queries.Get
+﻿using MediatR;
+using School.Domain.Entities.Classes;
+
+namespace School.Service.Abstractions.UseCases.Classes.Queries.Get
 {
-    internal class GetAllClassQuery
+    public class GetAllClassQuery : IRequest<IEnumerable<Class>>
     {
+
     }
 }
