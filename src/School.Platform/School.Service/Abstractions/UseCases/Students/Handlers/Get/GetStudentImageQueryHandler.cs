@@ -4,42 +4,34 @@ using School.Domain.Entities.Students;
 using School.Domain.Exceptions.Image;
 using School.Domain.Exceptions.Students;
 using School.Service.Abstractions.DataAccess;
-using School.Service.Abstractions.UseCases.Students.Commands.Delete;
+using School.Service.Abstractions.UseCases.Students.Queries.Get;
 using School.Service.Interfaces.File;
 
-namespace School.Service.Abstractions.UseCases.Students.Handlers.Delete
+namespace School.Service.Abstractions.UseCases.Students.Handlers.Get
 {
-    public class DeleteStudentCommandHandler : IRequestHandler<DeleteStudentCommand, int>
+    public class GetStudentImageQueryHandler : IRequestHandler<GetStudentImageQuery, byte[]>
     {
         private readonly IApplicationDbContext _context;
         private readonly IFileService _fileService;
 
-        public DeleteStudentCommandHandler(IApplicationDbContext context, IFileService fileService)
+        public GetStudentImageQueryHandler(IApplicationDbContext context, IFileService fileService)
         {
             _context = context;
             _fileService = fileService;
         }
 
-        public async Task<int> Handle(DeleteStudentCommand request, CancellationToken cancellationToken)
+        public async Task<byte[]> Handle(GetStudentImageQuery request, CancellationToken cancellationToken)
         {
             Student? student = await _context.Students.FirstOrDefaultAsync(x => x.StudentId == request.StudentId,cancellationToken);
 
             if (student == null)
                 throw new StudentNotFound();
-
-            try
-            {
-                await _fileService.DeleteImageAsync(student.ImagePath);
-            }
-            catch
-            {
+            else if (student.ImagePath == null)
                 throw new ImageNotFound();
-            }
 
-            _context.Students.Remove(student);
-            int result = await _context.SaveChangesAsync(cancellationToken);
+            byte[] image = await _fileService.GetImageAsync(student.ImagePath);
 
-            return result;
+            return image;
         }
     }
 }

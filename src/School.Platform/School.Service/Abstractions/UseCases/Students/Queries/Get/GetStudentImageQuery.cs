@@ -1,9 +1,8 @@
 ﻿using MediatR;
-using School.Domain.Entities.Students;
 
 namespace School.Service.Abstractions.UseCases.Students.Queries.Get
 {
-    public class GetStudentByIdQuery : IRequest<Student>
+    public class GetStudentImageQuery : IRequest<byte[]>
     {
         public int StudentId { get; set; }
     }

@@ -1,5 +1,4 @@
-﻿using School.Domain.Entities.ClassTasks;
-using School.Domain.Entities.Teachers;
+﻿using School.Domain.Entities.Teachers;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 

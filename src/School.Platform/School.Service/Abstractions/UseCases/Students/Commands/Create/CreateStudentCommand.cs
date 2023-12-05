@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using School.Domain.Dtos.Students;
 
 namespace School.Service.Abstractions.UseCases.Students.Commands.Create
 {
-    internal class CreateStudentCommand
+    public class CreateStudentCommand : StudentCreateDto, IRequest<int>
     {
     }
 }

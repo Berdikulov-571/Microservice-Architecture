@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using School.Domain.Entities.Students;
 
 namespace School.Service.Abstractions.UseCases.Students.Queries.Get
 {
-    internal class GetAllStudentQuery
+    public class GetAllStudentQuery : IRequest<IEnumerable<Student>>
     {
+
     }
 }
