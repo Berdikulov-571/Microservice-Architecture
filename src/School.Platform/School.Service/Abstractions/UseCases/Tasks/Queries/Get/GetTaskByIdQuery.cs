@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace School.Service.Abstractions.UseCases.Tasks.Queries.Get
 {
-    internal class GetTaskByIdQuery
+    public class GetTaskByIdQuery : IRequest<School.Domain.Entities.Task.Tasks>
     {
+        public int TaskId { get; set; }
     }
 }
