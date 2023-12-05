@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace School.Service.Abstractions.UseCases.Students.Commands.Delete
 {
-    internal class DeleteStudentCommand
+    public class DeleteStudentCommand : IRequest<int>
     {
+        public int StudentId { get; set; }
     }
 }
