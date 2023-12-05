@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace School.Service.Abstractions.UseCases.Classes.Commands.Delete
 {
-    internal class DeleteClassCommand
+    public class DeleteClassCommand : IRequest<int>
     {
+        public int ClassId { get; set; }
     }
 }
