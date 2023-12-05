@@ -1,12 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
+using School.Domain.Entities.Students;
+using School.Domain.Exceptions.Image;
+using School.Domain.Exceptions.Students;
+using School.Service.Abstractions.DataAccess;
+using School.Service.Abstractions.UseCases.Students.Commands.Delete;
+using School.Service.Interfaces.File;
 
 namespace School.Service.Abstractions.UseCases.Students.Handlers.Delete
 {
-    internal class DeleteStudentCommandHandler
+    public class DeleteStudentCommandHandler : IRequestHandler<DeleteStudentCommand, int>
     {
+        private readonly IApplicationDbContext _context;
+        private readonly IFileService _fileService;
+
+        public DeleteStudentCommandHandler(IApplicationDbContext context, IFileService fileService)
+        {
+            _context = context;
+            _fileService = fileService;
+        }
+
+        public async Task<int> Handle(DeleteStudentCommand request, CancellationToken cancellationToken)
+        {
+            Student? student = await _context.Students.FirstOrDefaultAsync(x => x.StudentId == request.StudentId,cancellationToken);
+
+            if (student == null)
+                throw new StudentNotFound();
+
+            try
+            {
+                await _fileService.DeleteImageAsync(student.ImagePath);
+            }
+            catch
+            {
+                throw new ImageNotFound();
+            }
+
+            _context.Students.Remove(student);
+            int result = await _context.SaveChangesAsync(cancellationToken);
+
+            return result;
+        }
     }
 }
