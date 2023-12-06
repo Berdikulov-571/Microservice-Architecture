@@ -20,22 +20,7 @@
   </ItemGroup>
 	
   <ItemGroup>
-    <Folder Include="UseCases\MissedLessons\Commands\Create\" />
-    <Folder Include="UseCases\MissedLessons\Commands\Delete\" />
-    <Folder Include="UseCases\MissedLessons\Commands\Update\" />
-    <Folder Include="UseCases\MissedLessons\Handlers\Create\" />
-    <Folder Include="UseCases\MissedLessons\Handlers\Delete\" />
-    <Folder Include="UseCases\MissedLessons\Handlers\Get\" />
-    <Folder Include="UseCases\MissedLessons\Handlers\Update\" />
-    <Folder Include="UseCases\MissedLessons\Queries\Get\" />
-    <Folder Include="UseCases\Task-Grades\Commands\Create\" />
-    <Folder Include="UseCases\Task-Grades\Commands\Delete\" />
-    <Folder Include="UseCases\Task-Grades\Commands\Update\" />
-    <Folder Include="UseCases\Task-Grades\Handlers\Create\" />
-    <Folder Include="UseCases\Task-Grades\Handlers\Delete\" />
-    <Folder Include="UseCases\Task-Grades\Handlers\Get\" />
     <Folder Include="UseCases\Task-Grades\Handlers\Update\" />
-    <Folder Include="UseCases\Task-Grades\Queries\Get\" />
   </ItemGroup>
 
 </Project>
