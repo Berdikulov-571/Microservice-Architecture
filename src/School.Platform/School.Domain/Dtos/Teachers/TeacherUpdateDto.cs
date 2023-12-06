@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using School.Domain.Enums.GenderEnum;
-using School.Domain.Enums.RoleEnum;
 
 namespace School.Domain.Dtos.Teachers
 {
@@ -16,6 +15,6 @@ namespace School.Domain.Dtos.Teachers
         public string Address { get; set; }
         public string PasswordHash { get; set; }
         public string Email { get; set; }
-        public IFormFile ImagePath { get; set; }
+        public IFormFile? ImagePath { get; set; }
     }
 }
