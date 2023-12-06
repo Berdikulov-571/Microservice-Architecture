@@ -11,6 +11,6 @@ namespace School.Domain.Dtos.Admins
         public string LastName { get; set; }
         public string Passwor { get; set; }
         public string Email { get; set; }
-        public IFormFile ImagePath { get; set; }
+        public IFormFile? ImagePath { get; set; }
     }
 }
