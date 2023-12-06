@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -10,10 +10,32 @@
 		<PackageReference Include="MediatR" Version="11.0.0" />
 		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.14" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="7.0.14" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
 	
   <ItemGroup>
     <ProjectReference Include="..\University.Domain\University.Domain.csproj" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <Folder Include="UseCases\MissedLessons\Commands\Create\" />
+    <Folder Include="UseCases\MissedLessons\Commands\Delete\" />
+    <Folder Include="UseCases\MissedLessons\Commands\Update\" />
+    <Folder Include="UseCases\MissedLessons\Handlers\Create\" />
+    <Folder Include="UseCases\MissedLessons\Handlers\Delete\" />
+    <Folder Include="UseCases\MissedLessons\Handlers\Get\" />
+    <Folder Include="UseCases\MissedLessons\Handlers\Update\" />
+    <Folder Include="UseCases\MissedLessons\Queries\Get\" />
+    <Folder Include="UseCases\Task-Grades\Commands\Create\" />
+    <Folder Include="UseCases\Task-Grades\Commands\Delete\" />
+    <Folder Include="UseCases\Task-Grades\Commands\Update\" />
+    <Folder Include="UseCases\Task-Grades\Handlers\Create\" />
+    <Folder Include="UseCases\Task-Grades\Handlers\Delete\" />
+    <Folder Include="UseCases\Task-Grades\Handlers\Get\" />
+    <Folder Include="UseCases\Task-Grades\Handlers\Update\" />
+    <Folder Include="UseCases\Task-Grades\Queries\Get\" />
   </ItemGroup>
 
 </Project>
