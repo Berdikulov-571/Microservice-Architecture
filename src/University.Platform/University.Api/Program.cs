@@ -1,3 +1,7 @@
+using System.Text.Json.Serialization;
+using University.DataAccess;
+using University.Service;
+
 namespace University.Api
 {
     public class Program
@@ -9,6 +13,11 @@ namespace University.Api
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDataAccess(builder.Configuration);
+            builder.Services.AddService();
+            builder.Services.AddControllersWithViews()
+                .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
             WebApplication app = builder.Build();
 
