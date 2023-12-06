@@ -32,15 +32,15 @@ namespace School.Service.UseCases.Admins.Handlers.Update
 
             Admin? checkUserName = await _context.Admins.FirstOrDefaultAsync(x => x.UserName == request.UserName, cancellationToken);
 
-            Admin? checkPhoneNumber = await _context.Admins.FirstOrDefaultAsync(x => x.Email == request.Email, cancellationToken);
+            Admin? checkEmail = await _context.Admins.FirstOrDefaultAsync(x => x.Email == request.Email, cancellationToken);
 
             if (checkUserName != null)
             {
                 throw new UserNameAlreadyExistsException();
             }
-            else if (checkPhoneNumber != null)
+            else if (checkEmail != null)
             {
-                throw new PhoneNumberAlreadyExistsException();
+                throw new EmailAlreadyExistsException();
             }
 
             admin.UserName = request.UserName;
