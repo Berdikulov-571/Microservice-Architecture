@@ -1,5 +1,8 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
+using Newtonsoft.Json;
+using School.Domain.Dtos.Images;
 using School.Domain.Entities.Students;
 using School.Domain.Exceptions.GlobalExceptions.AlreadyExistsExceptions;
 using School.Service.Abstractions.DataAccess;
@@ -13,11 +16,13 @@ namespace School.Service.UseCases.Students.Handlers.Create
     {
         private readonly IApplicationDbContext _context;
         private readonly IFileService _fileService;
+        private readonly IDistributedCache _distributedCache;
 
-        public CreateStudentCommandHandler(IApplicationDbContext context, IFileService fileService)
+        public CreateStudentCommandHandler(IApplicationDbContext context, IFileService fileService, IDistributedCache distributedCache)
         {
             _context = context;
             _fileService = fileService;
+            _distributedCache = distributedCache;
         }
 
         public async Task<int> Handle(CreateStudentCommand request, CancellationToken cancellationToken)
@@ -34,6 +39,8 @@ namespace School.Service.UseCases.Students.Handlers.Create
                 throw new EmailAlreadyExistsException();
 
             string imagePath = await _fileService.UploadImageAsync(request.Image);
+
+              
 
             Student student = new Student()
             {
@@ -52,9 +59,31 @@ namespace School.Service.UseCases.Students.Handlers.Create
                 Role = Domain.Enums.RoleEnum.Role.Student,
             };
 
-            await _context.Students.AddAsync(student, cancellationToken);
+
+            var res = await _context.Students.AddAsync(student, cancellationToken);
+
             int result = await _context.SaveChangesAsync(cancellationToken);
 
+
+            string? cache = _distributedCache.GetString("Student");
+
+            if (cache != null)
+            {
+                var deserializeObj = JsonConvert.DeserializeObject<List<ImageHelper>>(cache);
+
+                deserializeObj.Add(new ImageHelper() { Id = res.Entity.StudentId,ImagePath = res.Entity.ImagePath });
+
+                _distributedCache.Remove("Student");
+
+                _distributedCache.SetString("Student", JsonConvert.SerializeObject(deserializeObj));
+            }
+            else
+            {
+                List<ImageHelper> strings = new List<ImageHelper>();
+                strings.Add(new ImageHelper() { Id = res.Entity.StudentId, ImagePath = res.Entity.ImagePath });
+                _distributedCache.SetString("Student", JsonConvert.SerializeObject(strings));
+            }
+           
             return result;
         }
     }
