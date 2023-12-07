@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using University.Domain.Entities.Teachers;
 using University.Service.UseCases.Teachers.Commands.Create;
@@ -27,6 +28,7 @@ namespace University.Api.Controllers.Teachers
             return Ok(result);
         }
 
+        [Authorize(Roles = "Teacher")]
         [HttpGet]
         public async ValueTask<IActionResult> GetByIdAsync(int teacherId)
         {
