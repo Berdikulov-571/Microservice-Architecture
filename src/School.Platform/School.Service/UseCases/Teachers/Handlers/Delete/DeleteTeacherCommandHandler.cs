@@ -1,5 +1,8 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
+using Newtonsoft.Json;
+using School.Domain.Dtos.Images;
 using School.Domain.Entities.Teachers;
 using School.Domain.Exceptions.Image;
 using School.Domain.Exceptions.Teacher;
@@ -13,11 +16,14 @@ namespace School.Service.UseCases.Teachers.Handlers.Delete
     {
         private readonly IApplicationDbContext _context;
         private readonly IFileService _fileService;
+        private readonly IDistributedCache _distributedCache;
 
-        public DeleteTeacherCommandHandler(IApplicationDbContext context, IFileService formFile)
+
+        public DeleteTeacherCommandHandler(IApplicationDbContext context, IFileService formFile, IDistributedCache distributedCache)
         {
             _context = context;
             _fileService = formFile;
+            _distributedCache = distributedCache;
         }
 
         public async Task<int> Handle(DeleteTeacherCommand request, CancellationToken cancellationToken)
@@ -28,6 +34,21 @@ namespace School.Service.UseCases.Teachers.Handlers.Delete
             {
                 throw new TeacherNotFound();
             }
+
+            string? cache = _distributedCache.GetString("Teacher");
+
+            if (cache != null)
+            {
+                var res = JsonConvert.DeserializeObject<List<ImageHelper>>(cache);
+                var response = res.FirstOrDefault(x => x.Id == request.TeacherId);
+                if(response != null)
+                {
+                    res.Remove(response);
+                }
+
+                _distributedCache.SetString("Teacher", JsonConvert.SerializeObject(res));
+            }
+
 
             try
             {
