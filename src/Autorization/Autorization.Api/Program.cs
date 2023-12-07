@@ -1,5 +1,7 @@
+using Autorization.Api.DataContexts;
 using Autorization.Api.Interfaces;
 using Autorization.Api.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace Autorization.Api
 {
@@ -15,6 +17,10 @@ namespace Autorization.Api
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddScoped<IAuthService, AuthService>();
+
+            builder.Services.AddDbContext<KadastrDatabase>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Kadastr")));
+            builder.Services.AddDbContext<SchoolDatabase>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("School")));
+            builder.Services.AddDbContext<UniversityDatabase>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("University")));
 
             var app = builder.Build();
 

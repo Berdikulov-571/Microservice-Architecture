@@ -28,6 +28,7 @@ namespace University.Api.Controllers.Admins
             return Ok(result);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async ValueTask<IActionResult> GetByIdAsync(int adminId)
         {

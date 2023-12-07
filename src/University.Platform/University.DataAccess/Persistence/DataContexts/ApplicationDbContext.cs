@@ -17,20 +17,20 @@ namespace University.DataAccess.Persistence.DataContexts
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
-        public DbSet<Admin> Admins { get ; set ; }
-        public DbSet<Course> Courses { get ; set ; }
-        public DbSet<Dedline> Dedlines { get ; set ; }
-        public DbSet<Group> Groups { get ; set ; }
-        public DbSet<Lesson> Lessons { get ; set ; }
-        public DbSet<NB> Nbs { get ; set ; }
-        public DbSet<Student> Students { get ; set ; }
-        public DbSet<Subject> Subjects { get ; set ; }
-        public DbSet<TaskGrade> TaskGrades { get ; set ; }
-        public DbSet<Teacher> Teachers { get ; set ; }
+        public DbSet<Admin> Admins { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Dedline> Dedlines { get; set; }
+        public DbSet<Group> Groups { get; set; }
+        public DbSet<Lesson> Lessons { get; set; }
+        public DbSet<NB> Nbs { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
+        public DbSet<TaskGrade> TaskGrades { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+            //modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
         }
     }
 }
