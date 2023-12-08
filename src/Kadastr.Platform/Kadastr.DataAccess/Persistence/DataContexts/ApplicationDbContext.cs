@@ -21,5 +21,10 @@ namespace Kadastr.DataAccess.Persistence.DataContexts
         public DbSet<Parcel> Parcels { get ; set ; }
         public DbSet<PercalLandUse> PercalLandUses { get ; set ; }
         public DbSet<Transaction> Transactions { get ; set ; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+        }
     }
 }
