@@ -9,6 +9,14 @@ namespace School.DataAccess.Persistence.EntityTypeConfigurations.TeacherSubject
         public void Configure(EntityTypeBuilder<TeacherSubjects> builder)
         {
             builder.HasKey(x => x.TeacherSubjectId);
+
+            builder.HasOne(ts => ts.Teacher)
+            .WithMany(t => t.TeacherSubjects)
+            .HasForeignKey(ts => ts.TeacherId);
+
+            builder.HasOne(ts => ts.Subject)
+                .WithMany()
+                .HasForeignKey(ts => ts.SubjectId);
         }
     }
 }
