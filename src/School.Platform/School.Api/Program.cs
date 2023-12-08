@@ -1,5 +1,6 @@
 using School.DataAccess;
 using School.Service;
+using School.Service.Service.BackGrounds;
 using System.Text.Json.Serialization;
 
 namespace School.Api
@@ -13,6 +14,8 @@ namespace School.Api
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddHostedService<BaseBackGroundService>();
 
             builder.Services.AddService();
             builder.Services.AddDataAccess(builder.Configuration);
