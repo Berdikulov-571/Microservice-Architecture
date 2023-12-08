@@ -11,7 +11,7 @@ namespace School.DataAccess
         public static IServiceCollection AddDataAccess(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<IApplicationDbContext, ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
-
+            
             return services;
         }
     }
