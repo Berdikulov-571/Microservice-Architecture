@@ -42,7 +42,6 @@ namespace School.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImagePath")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
@@ -66,6 +65,19 @@ namespace School.DataAccess.Migrations
                     b.HasKey("AdminId");
 
                     b.ToTable("Admins");
+
+                    b.HasData(
+                        new
+                        {
+                            AdminId = 1,
+                            CreatedAt = new DateTime(2023, 12, 7, 20, 42, 12, 960, DateTimeKind.Local).AddTicks(4084),
+                            Email = "bsanjarbek06@gmail.com",
+                            FirstName = "Sanjarbek",
+                            LastName = "Berdikulov",
+                            PasswordHash = "9A143ED2A889103C96EC89628EF8F62AD99E42A782998B60378814828E4C9146E4535EBD8F43F7BBDB23311E38DB0D8DA006FF407469DE95BB9DD78EA1F0A28B",
+                            Role = 0,
+                            UserName = "Berdikulov_571"
+                        });
                 });
 
             modelBuilder.Entity("School.Domain.Entities.ClassTasks.ClassTask", b =>
