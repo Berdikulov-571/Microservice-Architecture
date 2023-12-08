@@ -20,6 +20,7 @@ namespace University.Api.Controllers.Teachers
             _mediator = mediator;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async ValueTask<IActionResult> CreateAsync([FromForm] CreateTeacherCommand teacher)
         {
@@ -28,7 +29,6 @@ namespace University.Api.Controllers.Teachers
             return Ok(result);
         }
 
-        [Authorize(Roles = "Teacher")]
         [HttpGet]
         public async ValueTask<IActionResult> GetByIdAsync(int teacherId)
         {
@@ -45,6 +45,7 @@ namespace University.Api.Controllers.Teachers
             return Ok(result);
         }
 
+        [Authorize(Roles = "Teacher")]
         [HttpGet]
         public async ValueTask<IActionResult> GetAllAsync()
         {

@@ -2,10 +2,9 @@
 {
     public enum Role
     {
-        SuperAdmin = 1,
+        SuperAdmin,
         Admin,
-        Developer,
-        Teaceher,
-        Student,
+        Teacher,
+        Student
     }
 }

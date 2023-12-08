@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using School.Domain.Entities.Teachers;
 using School.Service.UseCases.Teachers.Commands.Create;
@@ -19,6 +20,7 @@ namespace School.Api.Controllers.Teachers
             _mediator = mediator;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async ValueTask<IActionResult> PostAsync([FromForm] CreateTeacherCommand teacher)
         {
@@ -43,6 +45,7 @@ namespace School.Api.Controllers.Teachers
             return Ok(result);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async ValueTask<IActionResult> GetAllAsync()
         {

@@ -12,7 +12,7 @@ using School.DataAccess.Persistence.DataContexts;
 namespace School.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231204110323_Initial")]
+    [Migration("20231207154213_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -45,7 +45,6 @@ namespace School.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImagePath")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
@@ -69,6 +68,19 @@ namespace School.DataAccess.Migrations
                     b.HasKey("AdminId");
 
                     b.ToTable("Admins");
+
+                    b.HasData(
+                        new
+                        {
+                            AdminId = 1,
+                            CreatedAt = new DateTime(2023, 12, 7, 20, 42, 12, 960, DateTimeKind.Local).AddTicks(4084),
+                            Email = "bsanjarbek06@gmail.com",
+                            FirstName = "Sanjarbek",
+                            LastName = "Berdikulov",
+                            PasswordHash = "9A143ED2A889103C96EC89628EF8F62AD99E42A782998B60378814828E4C9146E4535EBD8F43F7BBDB23311E38DB0D8DA006FF407469DE95BB9DD78EA1F0A28B",
+                            Role = 0,
+                            UserName = "Berdikulov_571"
+                        });
                 });
 
             modelBuilder.Entity("School.Domain.Entities.ClassTasks.ClassTask", b =>
@@ -79,8 +91,9 @@ namespace School.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClassTaskId"));
 
-                    b.Property<DateTime>("Day")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Day")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TaskId")
                         .HasColumnType("int");
@@ -130,7 +143,7 @@ namespace School.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LessonId"));
 
-                    b.Property<DateTime?>("EndDate")
+                    b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("StartDate")
@@ -227,12 +240,7 @@ namespace School.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("TeacherId")
-                        .HasColumnType("int");
-
                     b.HasKey("SubjectId");
-
-                    b.HasIndex("TeacherId");
 
                     b.ToTable("Subjects");
                 });
@@ -245,9 +253,15 @@ namespace School.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TaskId"));
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("TaskId");
 
@@ -389,23 +403,16 @@ namespace School.DataAccess.Migrations
                     b.Navigation("Class");
                 });
 
-            modelBuilder.Entity("School.Domain.Entities.Subjects.Subject", b =>
-                {
-                    b.HasOne("School.Domain.Entities.Teachers.Teacher", null)
-                        .WithMany("Subjects")
-                        .HasForeignKey("TeacherId");
-                });
-
             modelBuilder.Entity("School.Domain.Entities.TeacherSubjectRelation.TeacherSubjects", b =>
                 {
                     b.HasOne("School.Domain.Entities.Subjects.Subject", "Subject")
-                        .WithMany()
+                        .WithMany("TeacherSubjects")
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("School.Domain.Entities.Teachers.Teacher", "Teacher")
-                        .WithMany()
+                        .WithMany("TeacherSubjects")
                         .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -413,6 +420,11 @@ namespace School.DataAccess.Migrations
                     b.Navigation("Subject");
 
                     b.Navigation("Teacher");
+                });
+
+            modelBuilder.Entity("School.Domain.Entities.Subjects.Subject", b =>
+                {
+                    b.Navigation("TeacherSubjects");
                 });
 
             modelBuilder.Entity("School.Domain.Entities.Task.Tasks", b =>
@@ -424,7 +436,7 @@ namespace School.DataAccess.Migrations
                 {
                     b.Navigation("ClassTasks");
 
-                    b.Navigation("Subjects");
+                    b.Navigation("TeacherSubjects");
                 });
 #pragma warning restore 612, 618
         }
