@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace Autorization.Api
+namespace Autorization.Api.Services
 {
     public class Hash512
     {

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using University.Service.Interfaces.File;
+using University.Service.Service.BackGround;
 using University.Service.Service.Files;
 
 namespace University.Service
@@ -12,10 +13,11 @@ namespace University.Service
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddScoped<IFileService, FileService>();
+            services.AddHostedService<BaseBackGroundService>();
 
             services.AddStackExchangeRedisCache(options =>
             {
-                options.InstanceName = "Redis";
+                options.InstanceName = "University";
                 options.Configuration = "127.0.0.1:6379";
             });
 
