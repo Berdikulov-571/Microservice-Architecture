@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
+using Serilog;
+using TelegramSink;
 using University.Domain.Entities.Admins;
 using University.Domain.Enums.Roles;
 using University.Domain.Exceptions.Email;
@@ -53,10 +55,17 @@ namespace University.Service.UseCases.Admins.Handlers.Create
                 CreatedAt = DateTime.Now
             };
 
+
             await _context.Admins.AddAsync(admin, cancellationToken);
 
             int result = await _context.SaveChangesAsync(cancellationToken);
 
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.Console()
+                .WriteTo.TeleSink("6664729300:AAExS7StUJ7Q3BuaEFKF21pg5oWttBpD2-E", "2017110018")
+                .CreateLogger();
+           
             return result;
         }
     }

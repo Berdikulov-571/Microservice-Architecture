@@ -20,6 +20,7 @@ namespace University.Api.Controllers.Admins
             _mediator = mediator;
         }
 
+        [Authorize(Roles = "SuperAdmin")]
         [HttpPost]
         public async ValueTask<IActionResult> PostAsync([FromForm] CreateAdminCommand admin)
         {
@@ -27,8 +28,7 @@ namespace University.Api.Controllers.Admins
 
             return Ok(result);
         }
-
-        [Authorize(Roles = "Admin")]
+        
         [HttpGet]
         public async ValueTask<IActionResult> GetByIdAsync(int adminId)
         {
@@ -42,6 +42,7 @@ namespace University.Api.Controllers.Admins
             return Ok(admin);
         }
 
+        [Authorize(Roles = "SuperAdmin")]
         [HttpDelete]
         public async ValueTask<IActionResult> DeleteAsync(int adminId)
         {
@@ -55,6 +56,7 @@ namespace University.Api.Controllers.Admins
             return Ok(result);
         }
 
+        [Authorize(Roles = "SuperAdmin")]
         [HttpGet]
         public async ValueTask<IActionResult> GetAllAsync()
         {
@@ -71,6 +73,7 @@ namespace University.Api.Controllers.Admins
             return Ok(result);
         }
 
+        [Authorize(Roles = "SuperAdmin")]
         [HttpGet]
         public async ValueTask<FileContentResult> GetImageAsync(int adminId)
         {

@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -23,7 +23,7 @@ namespace School.DataAccess.Migrations
                     PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Role = table.Column<int>(type: "int", nullable: false),
-                    ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
@@ -33,12 +33,27 @@ namespace School.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Subjects",
+                columns: table => new
+                {
+                    SubjectId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Subjects", x => x.SubjectId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Tasks",
                 columns: table => new
                 {
                     TaskId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -99,7 +114,7 @@ namespace School.DataAccess.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TeacherId = table.Column<int>(type: "int", nullable: false),
                     TaskId = table.Column<int>(type: "int", nullable: false),
-                    Day = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Day = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -127,7 +142,7 @@ namespace School.DataAccess.Migrations
                     Theme = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TeacherId = table.Column<int>(type: "int", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -141,22 +156,29 @@ namespace School.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Subjects",
+                name: "TeacherSubjects",
                 columns: table => new
                 {
-                    SubjectId = table.Column<int>(type: "int", nullable: false)
+                    TeacherSubjectId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TeacherId = table.Column<int>(type: "int", nullable: true)
+                    TeacherId = table.Column<int>(type: "int", nullable: false),
+                    SubjectId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Subjects", x => x.SubjectId);
+                    table.PrimaryKey("PK_TeacherSubjects", x => x.TeacherSubjectId);
                     table.ForeignKey(
-                        name: "FK_Subjects_Teachers_TeacherId",
+                        name: "FK_TeacherSubjects_Subjects_SubjectId",
+                        column: x => x.SubjectId,
+                        principalTable: "Subjects",
+                        principalColumn: "SubjectId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TeacherSubjects_Teachers_TeacherId",
                         column: x => x.TeacherId,
                         principalTable: "Teachers",
-                        principalColumn: "TeacherId");
+                        principalColumn: "TeacherId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -191,31 +213,10 @@ namespace School.DataAccess.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "TeacherSubjects",
-                columns: table => new
-                {
-                    TeacherSubjectId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    TeacherId = table.Column<int>(type: "int", nullable: false),
-                    SubjectId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TeacherSubjects", x => x.TeacherSubjectId);
-                    table.ForeignKey(
-                        name: "FK_TeacherSubjects_Subjects_SubjectId",
-                        column: x => x.SubjectId,
-                        principalTable: "Subjects",
-                        principalColumn: "SubjectId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_TeacherSubjects_Teachers_TeacherId",
-                        column: x => x.TeacherId,
-                        principalTable: "Teachers",
-                        principalColumn: "TeacherId",
-                        onDelete: ReferentialAction.Cascade);
-                });
+            migrationBuilder.InsertData(
+                table: "Admins",
+                columns: new[] { "AdminId", "CreatedAt", "Email", "FirstName", "ImagePath", "LastName", "PasswordHash", "Role", "UpdatedAt", "UserName" },
+                values: new object[] { 1, new DateTime(2023, 12, 7, 20, 42, 12, 960, DateTimeKind.Local).AddTicks(4084), "bsanjarbek06@gmail.com", "Sanjarbek", null, "Berdikulov", "9A143ED2A889103C96EC89628EF8F62AD99E42A782998B60378814828E4C9146E4535EBD8F43F7BBDB23311E38DB0D8DA006FF407469DE95BB9DD78EA1F0A28B", 0, null, "Berdikulov_571" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Classes_ClassTeacher",
@@ -241,11 +242,6 @@ namespace School.DataAccess.Migrations
                 name: "IX_Students_ClassId",
                 table: "Students",
                 column: "ClassId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Subjects_TeacherId",
-                table: "Subjects",
-                column: "TeacherId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TeacherSubjects_SubjectId",

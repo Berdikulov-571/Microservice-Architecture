@@ -12,7 +12,7 @@ using University.DataAccess.Persistence.DataContexts;
 namespace University.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231206055611_Initial")]
+    [Migration("20231207143055_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -294,6 +294,10 @@ namespace University.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Role")
                         .HasColumnType("int");
 
@@ -418,6 +422,10 @@ namespace University.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
