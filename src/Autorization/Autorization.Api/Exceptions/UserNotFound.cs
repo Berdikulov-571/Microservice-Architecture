@@ -1,4 +1,4 @@
-﻿namespace Autorization.Api
+﻿namespace Autorization.Api.Exceptions
 {
     public class UserNotFound : Exception
     {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using School.Domain.Entities.Task;
+using System.Reflection.Emit;
 
 namespace School.DataAccess.Persistence.EntityTypeConfigurations.Task
 {

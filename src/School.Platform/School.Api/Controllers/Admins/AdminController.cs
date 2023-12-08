@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using School.Domain.Entities.Admins;
 using School.Service.UseCases.Admins.Commands.Create;
@@ -18,6 +19,7 @@ namespace School.Api.Controllers.Admins
             _mediator = mediator;
         }
 
+        [Authorize(Roles = "SuperAdmin")]
         [HttpPost]
         public async ValueTask<IActionResult> PostAsync([FromForm] CreateAdminCommand admin)
         {
@@ -39,6 +41,7 @@ namespace School.Api.Controllers.Admins
             return Ok(admin);
         }
 
+        [Authorize(Roles = "SuperAdmin")]
         [HttpDelete]
         public async ValueTask<IActionResult> DeleteAsync(int adminId)
         {
@@ -52,6 +55,7 @@ namespace School.Api.Controllers.Admins
             return Ok(result);
         }
 
+        [Authorize(Roles = "SuperAdmin")]
         [HttpGet]
         public async ValueTask<IActionResult> GetAllAsync()
         {
@@ -59,6 +63,7 @@ namespace School.Api.Controllers.Admins
 
             return Ok(admins);
         }
+
 
         [HttpPut]
         public async ValueTask<IActionResult> UpdateAsync([FromForm] UpdateAdminCommand admin)
@@ -68,6 +73,8 @@ namespace School.Api.Controllers.Admins
             return Ok(result);
         }
 
+
+        [Authorize(Roles = "SuperAdmin")]
         [HttpGet]
         public async ValueTask<FileContentResult> GetImageAsync(int adminId)
         {

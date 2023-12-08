@@ -18,7 +18,7 @@ namespace School.Service.UseCases.Classes.Handlers.Get
 
         public async Task<Class> Handle(GetClassByIdQuery request, CancellationToken cancellationToken)
         {
-            Class? @class = await _context.Classes.FirstOrDefaultAsync(x => x.ClassId == request.ClassId, cancellationToken);
+            Class? @class = await _context.Classes.Include(x => x.Teacher).FirstOrDefaultAsync(x => x.ClassId == request.ClassId, cancellationToken);
 
             if (@class == null)
                 throw new ClassNotFound();

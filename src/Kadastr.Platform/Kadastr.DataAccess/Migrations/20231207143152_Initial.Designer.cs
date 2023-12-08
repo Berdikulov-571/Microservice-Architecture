@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kadastr.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231207060259_Initial")]
+    [Migration("20231207143152_Initial")]
     partial class Initial
     {
         /// <inheritdoc />

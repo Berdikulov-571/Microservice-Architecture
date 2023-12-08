@@ -18,7 +18,7 @@ namespace School.Service.UseCases.Classes.Handlers.Get
 
         public async Task<IEnumerable<Class>> Handle(GetAllClassQuery request, CancellationToken cancellationToken)
         {
-            List<Class> result = await _context.Classes.ToListAsync(cancellationToken);
+            List<Class> result = await _context.Classes.Include(x => x.Teacher).ToListAsync(cancellationToken);
 
             if (result == null)
                 throw new ClassNotFound();
