@@ -6,6 +6,7 @@ using School.Service.UseCases.Teachers.Commands.Create;
 using School.Service.UseCases.Teachers.Commands.Delete;
 using School.Service.UseCases.Teachers.Commands.Update;
 using School.Service.UseCases.Teachers.Queries.Get;
+using TelegramBot;
 
 namespace School.Api.Controllers.Teachers
 {
@@ -26,6 +27,9 @@ namespace School.Api.Controllers.Teachers
         {
             int result = await _mediator.Send(teacher);
 
+            BotMessage bot = new BotMessage();
+            await bot.Added("School.Api -> Teacher");
+
             return Ok(result);
         }
 
@@ -41,6 +45,9 @@ namespace School.Api.Controllers.Teachers
         public async ValueTask<IActionResult> DeleteAsync(int teacherId)
         {
             int result = await _mediator.Send(new DeleteTeacherCommand() { TeacherId = teacherId });
+
+            BotMessage bot = new BotMessage();
+            await bot.Deleted("School.Api -> Teacher");
 
             return Ok(result);
         }
@@ -58,6 +65,9 @@ namespace School.Api.Controllers.Teachers
         public async ValueTask<IActionResult> UpdateAsync([FromForm] UpdateTeacherCommand teacher)
         {
             int result = await _mediator.Send(teacher);
+
+            BotMessage bot = new BotMessage();
+            await bot.Updated("School.Api -> Teacher");
 
             return Ok(result);
         }
