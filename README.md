@@ -8,11 +8,53 @@ Hozir ketma-ketligida bu projectlarni tanishtirishni boshlayman.
 Bu projectda N-Tier Architectureda Foydalanganmiz
 ![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/2c65b3e3-5bbe-4b35-bebe-dc2767828477)
 
-University.Domain qismida bizning CustomAttributelarimiz,Dtolarimiz,entitylar,Enumalar va Custom Exceptionlar mavjud ![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/8a082de0-eb0a-42eb-9540-4104709c4533)
-Bu projectda ishlatilgan Entitylarni tepadagi rasmda ko'rib olishingiz mumkin shu bilan Domain qismi tugaydi. Endi esa University.DataAccess qismiga o'tamiz Bu yerda bizning DataBasega Connect qilish qismi va Migrationlarimiz,EntityTypeConfiguratsiyalar turadi va shunga o'xshash databasega oid narsalar shu yerda joylashagan bo'ladi ![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/cbafac72-e978-4bc0-90ea-030091b6280f) ApplicationDbContext clasi ichiga kirib ko'rsak siz DbContext va IApplicationDbContext interfacesida inheritance qilinganini ko'rishingiz mumkin  ![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/4edf0ff8-b336-4555-87d2-7582b499ec2a)
+University.Domain qismida bizning CustomAttributelarimiz,Dtolarimiz,entitylar,Enumalar va Custom Exceptionlar mavjud 
+![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/8a082de0-eb0a-42eb-9540-4104709c4533)
+Bu projectda ishlatilgan Entitylarni tepadagi rasmda ko'rib olishingiz mumkin shu bilan Domain qismi tugaydi. Endi esa University.DataAccess qismiga o'tamiz Bu yerda bizning DataBasega Connect qilish qismi va Migrationlarimiz,EntityTypeConfiguratsiyalar turadi va shunga o'xshash databasega oid narsalar shu yerda joylashagan bo'ladi 
+![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/cbafac72-e978-4bc0-90ea-030091b6280f) ApplicationDbContext clasi ichiga kirib ko'rsak siz DbContext va IApplicationDbContext interfacesida inheritance qilinganini ko'rishingiz mumkin  
+![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/4edf0ff8-b336-4555-87d2-7582b499ec2a)
 shu kabi nega bunday deb aytadigan bo'lsak bizning University.Service Layerida ApplicationDbContextdan emas balki IApplicationDbContext interfacesi yordamida databazaga querylar jo'natishimizni ko'rishingiz mumkin va shu bilan DataAccess qismi ham o'z nihoyasiga yetdi,
-Endi sizlar University.Serviec Layerini tanishtirib o'taman bu Layerda bizning nimalarimiz joylashadi shularni aytib o'taman ->  ![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/6aaf192a-6417-4e4e-ad16-f82383fa29a9)
+Endi sizlar University.Serviec Layerini tanishtirib o'taman bu Layerda bizning nimalarimiz joylashadi shularni aytib o'taman ->  
+![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/6aaf192a-6417-4e4e-ad16-f82383fa29a9)
 
-Abstractions -> ichida bizning interfacelarimiz va shunga o'xshash mavhum narsalar saqlanadi IApplicationDbContext ham shu yerda joylashgan ![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/78dba1ca-3583-48e6-a312-d90598bb75f4)
+Abstractions -> ichida bizning interfacelarimiz va shunga o'xshash mavhum narsalar saqlanadi IApplicationDbContext ham shu yerda joylashgan
+![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/78dba1ca-3583-48e6-a312-d90598bb75f4)
 shu ko'rinishda bo'ladi.
-Securtity -> papkasi ichida bizning PasswordHashlash uchun algoritmimiz joylashga. Password Hashlash uchun Hash512 Algoritmi bo'yicha Passwordlarimiz Hashlangan ![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/b09d0203-1b05-402c-8a82-c77e0e5075bf)
+Securtity -> papkasi ichida bizning PasswordHashlash uchun algoritmimiz joylashga. Password Hashlash uchun Hash512 Algoritmi bo'yicha Passwordlarimiz Hashlangan
+![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/b09d0203-1b05-402c-8a82-c77e0e5075bf)
+Va bu yerda BackGround Service dan ham foydalanilgan Vazifasini aytib o'tadigan bo'lsam -> har 10 sekundda bizning studentlar joylashgan keshni yangilab turish uchun yozilgan 
+UseCases qismida bizning asosiy logikalar joylashgan  yani bu yerda barcha Crud lar bazaga yozish o'chirish o'qish yangilash kabi vazifalarni bajaradi bu amallarni bajarish uchun men MediatR design Patternida foydalanilganman, Har bitta Modelni Commandi,Queryi va Handleri bo'ladi Commands qimida -> bazaga yozish,o'chirish,yangilash kabi amallarning Commandi yoziladi yanada tushunarli qilib aytadigan bo'lsam Dto vazifasini o'taydi bizga shu command kirib keladi userdan va bu Comman IRequest<> interfacedan inheritance olgan bo'lishi kerak bo'ladi 
+![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/89da5233-8818-40a9-a260-d1e17ff85931)
+![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/b322364f-4c50-400b-8cba-a8a8515bb76d)
+![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/7df999a2-9b96-4c43-9dec-f241fd269e7d)
+
+Shu kabi bo'ladi IRequest bu generic interface bo'lib genericiga biz type berib yuboramiz va o'sha tipda ma'lumot qaytarish kerak bo'ladi
+
+Queries qismiga keladigan bo'lsak bu yerda bizning faqatgina Get operatsiyamiz bajariladi faatgina get -> 
+![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/f7492f8b-f6cd-48c3-a214-75d8c3a24381)
+![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/7b03ce6a-7a22-410b-8faf-227b7e70cc52)
+![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/4b2fa9dd-28b7-46db-81b5-701b8784e867)
+
+shu kabi bo'ladi bu ham huddi commanga o'hashydi
+
+Endi esa eng asosiy qismi Handler qismi -> bu qismida bizning bu command va querylarning realizatsiya bo'ladi haqiqiy bazaga murojatlar shu yerda bo'ladi 
+![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/b29b605e-5ff6-4b4f-b7ae-fddbd06ce4fc)
+
+Bu GetAdminByIdQueryHandler clasimiz IRequestHandler<> generic classdan inheritance olgan bo'lishi kerak bo'ladi va birinchi paramertiga command yoki query beriladi yani qaysi command yoki queryning realzatisya bo'layotganligi aytib o'tiladi ikkinchi parametriga esa qaytuvchi tipi beriladi bu interfaceni birgina Handle methodi mavjud shu qismda logikani bosaveramiz.
+
+Menimcha sizga oz bo'lsada mediatrR ning ishlash jarayonini tushuntira oldim deb o'ylayman ha aytgancha agarda siz mediatR ni dasturingizda implement qilmoqchi bo'lsangiz quyidagi packeglarni o'rnatishingiz kerak bo'ladi
+![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/b47167b8-712f-439d-80bc-494b387524b1)
+shu ikkisni va Program.cs da buning registrationdan o'tkazib qo'yish kerak bo'ladi 
+![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/45643928-4d42-4f12-a658-0485e3e1ddae)
+
+Shu bilan bizning Service Layerimiz o'z nihoyasiga yetdi keyingi qism University.Api qismi bo'ladi bu Layerda Faqat Controller mavjud endi bu yerda bizning yozgan servicelarimizni yani ishlatib ko'ramiz yani MediatRni ishlatib ko'ramiz birinchi navbatda Controllerning Constructida register qilib olamiz
+![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/2b558d9b-47d9-42f2-a7cd-de96f80f9be5)
+
+Birinchi bo'lib GetById ni ishlatishni ko'rib o'tamiz 
+![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/78757fa7-6645-48cc-9ae6-9bded6bd1237)
+Get All 
+![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/40a0a202-17f2-4567-9005-feaecc01800a)
+Post Async
+![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/d80e678d-9bce-42ed-ad09-bfa80be47fc3)
+
+shu kabi mediatR ishlaydi _mediatorga.Send() qilaveramiz bu esa bergan command yoki query bo'yicha uzi topib boradi
