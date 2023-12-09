@@ -118,4 +118,4 @@ Agar dasturni run qilmoqchi bo'lsangiz.
 2. Barcha Platformdagi appsettings.jsondagi connectionStringlarni o'zgartirish kerak bo'ladi
 3. Barcha Platformdagi migrationlarni o'chirish va qaytatdan Migration qilish kerak bo'ladi -> update-database
 4. Telegram bot da o'zingizni TelegramBot Tokeningiz va o'zingizning ChatId yingizni yozishingiz kerak bo'ladi
-5. Imagelarni ishlatish uchun C:\Users\...\AppData\Roaming\ ga kirib media papkasini ochamiz va media papkasi ichida 3 ta papka avatars,files,images papkasini ochish talab etiladi agar sizda Users\ ning ichida appData papkasi yashirin bo'lib qolgan bo'lishi mumkin u holda uni skritniydan ochib qo'yishingiz kerak bo'ladi yoki Windows Terminal orqali kirib papkalarni ochishingiz mumkin.
+5. Imagelarni ishlatish uchun C:\\Users\\...\\AppData\\Roaming\\ ga kirib media papkasini ochamiz va media papkasi ichida 3 ta papka avatars,files,images papkasini ochish talab etiladi agar sizda Users\ ning ichida appData papkasi yashirin bo'lib qolgan bo'lishi mumkin u holda uni skritniydan ochib qo'yishingiz kerak bo'ladi yoki Windows Terminal orqali kirib papkalarni ochishingiz mumkin.
