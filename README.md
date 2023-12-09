@@ -1,4 +1,4 @@
-Assalomu aleykum mening bu loyiham imtihon uchun microservicelar bilan ishlash va o'rgangan yangiliklarimizni projectda qo'llash edi.
+![Screenshot 2023-12-09 023520](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/db9dbcd4-41bb-4eca-8000-63108b3d2e8a)Assalomu aleykum mening bu loyiham imtihon uchun microservicelar bilan ishlash va o'rgangan yangiliklarimizni projectda qo'llash edi.
 Mega imtihon uchun qilish kerak bo'lgan projectlar 4 ta edi: 1.University, 2.School, 3.Cadastre, 4.Jamoat Transporti
 
 ![Screenshot 2023-12-09 021549](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/fb7889d6-85c8-4e3f-ab1a-839ff071ae85)
@@ -94,3 +94,28 @@ shu kabi swaggerga chiqarib beradi.
 
 Shu bilan University.Api ham o'z nihoyasiga yetdi va Projectham o'z nihoyasiga yetdi
 
+Yana bir qo'shgan o'zgarishlardan biri School.Projectdiga hohlagan bir Modelgan siz malumot Add,Update va Delete bo'lsa Telegram.Bot ga ma'lumot yuboib turuvchi qilingan u botga ma'lumot qanday boradi 
+
+![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/3e1f90cb-1cd1-40aa-b532-20be09a7f212)
+
+Cadastre Database
+
+![Screenshot 2023-12-09 020434](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/37381d69-83d2-4877-ab7c-440b99462a0d)
+
+School Database
+
+![Screenshot 2023-12-09 020845](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/49b3f895-75d2-46a0-a2d4-790a577ee724)
+
+Transport Database
+
+![Screenshot 2023-12-09 023520](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/02da1b82-103d-42a8-9789-39df26cf953e)
+
+
+shu ko'rinishda va Globalniy Avtorization qo'shilgan va University Platform uchun sql Serverda Triggerlar qo'llanilgan. shu bilan Documentation o'z nihoyasiga yetdi e'tiboringiz uchun raxmat.
+
+Agar dasturni run qilmoqchi bo'lsangiz.
+1. Redisni ishga tushurish
+2. Barcha Platformdagi appsettings.jsondagi connectionStringlarni o'zgartirish kerak bo'ladi
+3. Barcha Platformdagi migrationlarni o'chirish va qaytatdan Migration qilish kerak bo'ladi -> update-database
+4. Telegram bot da o'zingizni TelegramBot Tokeningiz va o'zingizning ChatId yingizni yozishingiz kerak bo'ladi
+5. Imagelarni ishlatish uchun C:\Users\...\AppData\Roaming\ ga kirib media papkasini ochamiz va media papkasi ichida 3 ta papka avatars,files,images papkasini ochish talab etiladi agar sizda Users\ ning ichida appData papkasi yashirin bo'lib qolgan bo'lishi mumkin u holda uni skritniydan ochib qo'yishingiz kerak bo'ladi yoki Windows Terminal orqali kirib papkalarni ochishingiz mumkin.
