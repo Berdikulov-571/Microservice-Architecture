@@ -27,9 +27,6 @@ namespace University.Api.Controllers.Admins
         {
             int result = await _mediator.Send(admin);
 
-            BotMessage bot = new BotMessage();
-            await bot.Added("University.Api -> Admin");
-
             return Ok(result);
         }
         
@@ -57,8 +54,7 @@ namespace University.Api.Controllers.Admins
 
             int result = await _mediator.Send(command);
 
-            BotMessage bot = new BotMessage();
-            await bot.Deleted("University.Api -> Admin");
+        
 
             return Ok(result);
         }
@@ -77,9 +73,7 @@ namespace University.Api.Controllers.Admins
         {
             int result = await _mediator.Send(admin);
 
-            BotMessage bot = new BotMessage();
-            await bot.Updated("University.Api -> Admin");
-
+          
             return Ok(result);
         }
 

@@ -1,0 +1,27 @@
+1. Admin After Delete
+
+SELECT *
+INTO ArchiveDeleteAdmin
+FROM Admins
+WHERE Adminid = 0;
+
+CREATE TRIGGER AfterDeleteAdminTrigger
+on Admins
+AFTER DELETE
+AS
+BEGIN
+DECLARE
+@AdminId INT,
+@UserName nchar(50),
+@FirstName nchar(50),
+@LastName nchar(50),
+@PasswordHash nchar(255),
+@Email nchar(255),
+@Role int,
+@ImagePath NCHAR(255)
+set NOCOUNT ON;
+select @AdminId = deleted.AdminId, @UserName = deleted.UserName,@FirstName = deleted.FirstName,@LastName = deleted.LastName, @PasswordHash = deleted.PasswordHash,
+@Email = deleted.Email, @Role = deleted.Role,@ImagePath = deleted.ImagePath from deleted
+INSERT INTO ArchiveDeleteAdmin(AdminId,UserName,FirstName,LastName,PasswordHash,Email,Role,ImagePath) VALUES(@AdminId,@UserName,@FirstName,@LastName,@PasswordHash,@Email,@Role,@ImagePath)
+END
+select * from Admins;

@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FD9B3DFC-FACF-4246-B2AE-FA43F9981FF8}"
+	ProjectSection(SolutionItems) = preProject
+		UniversityTriggers.txt = UniversityTriggers.txt
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "School.Platform", "School.Platform", "{D6BAB4D9-8323-4E3D-AE68-53E450916AC3}"
 EndProject
@@ -55,7 +58,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autorization.Api", "src\Aut
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TelegramBot", "TelegramBot", "{6298FFBF-DDF1-4037-8FD1-9E6CC8C6152F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelegramBot", "src\TelegramBot\TelegramBot\TelegramBot.csproj", "{03179E3A-EED9-4A84-8D6F-84433C585881}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelegramBot", "src\TelegramBot\TelegramBot\TelegramBot.csproj", "{03179E3A-EED9-4A84-8D6F-84433C585881}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
