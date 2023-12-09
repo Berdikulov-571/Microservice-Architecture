@@ -25,3 +25,51 @@ select @AdminId = deleted.AdminId, @UserName = deleted.UserName,@FirstName = del
 INSERT INTO ArchiveDeleteAdmin(AdminId,UserName,FirstName,LastName,PasswordHash,Email,Role,ImagePath) VALUES(@AdminId,@UserName,@FirstName,@LastName,@PasswordHash,@Email,@Role,@ImagePath)
 END
 select * from Admins;
+
+2. Teacher After Delete
+
+
+SELECT *
+INTO ArchiveDeleteTeacher
+FROM Teachers
+WHERE TeacherId = 0;
+
+select * from ArchiveDeleteTeacher;
+
+
+CREATE TRIGGER AfterDeleteTeacherTrigger
+on Teachers
+AFTER DELETE
+AS
+BEGIN
+DECLARE
+@TeacherId INT,
+@FirstName nchar,
+@LastName nchar,
+@Email nchar,
+@PasswordHash nchar,
+@Birthdate DATETIME,
+@Gender int,
+@Address NCHAR,
+@AddressTemporary NCHAR,
+@PhoneNumber NCHAR,
+@Salt NCHAR,
+@Role int,
+@ImagePath NCHAR,
+@CreatedAt DATETIME,
+@UpdatedAt DATETIME
+set NOCOUNT ON;
+select @TeacherId = deleted.TeacherId, @FirstName = deleted.FirstName,@LastName = deleted.LastName,@Email = deleted.Email, @PasswordHash = deleted.PasswordHash,
+@Birthdate = deleted.Birthdate, @Gender = deleted.Gender,@Address = deleted.Address,
+@AddressTemporary = deleted.AddressTemporary,@PhoneNumber = deleted.PhoneNumber, 
+@Salt = deleted.Salt ,
+@Role = deleted.Role,
+@ImagePath = deleted.ImagePath ,
+@CreatedAt = deleted.CreatedAt,
+@UpdatedAt = deleted.UpdateAt
+from deleted
+INSERT INTO ArchiveDeleteTeacher(TeacherId,FirstName,LastName,Email,PasswordHash,Birthdate,Gender,Address,
+AddressTemporary,PhoneNumber,Salt,Role,ImagePath,CreatedAt,UpdateAt) VALUES(@TeacherId,@FirstName,@LastName,@Email,@PasswordHash,@Birthdate,@Gender,
+@Address,@AddressTemporary,@PhoneNumber,@Salt,@Role,@ImagePath,@CreatedAt,@UpdatedAt)
+END
+select * from Teachers;
