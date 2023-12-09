@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\TelegramBot\TelegramBot\TelegramBot.csproj" />
     <ProjectReference Include="..\University.DataAccess\University.DataAccess.csproj" />
     <ProjectReference Include="..\University.Service\University.Service.csproj" />
   </ItemGroup>

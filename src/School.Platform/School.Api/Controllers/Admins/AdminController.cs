@@ -6,6 +6,7 @@ using School.Service.UseCases.Admins.Commands.Create;
 using School.Service.UseCases.Admins.Commands.Delete;
 using School.Service.UseCases.Admins.Commands.Update;
 using School.Service.UseCases.Admins.Queries.Get;
+using TelegramBot;
 
 namespace School.Api.Controllers.Admins
 {
@@ -24,6 +25,9 @@ namespace School.Api.Controllers.Admins
         public async ValueTask<IActionResult> PostAsync([FromForm] CreateAdminCommand admin)
         {
             int result = await _mediator.Send(admin);
+
+            BotMessage bot = new BotMessage();
+            await bot.Added("School.Api -> Admin");
 
             return Ok(result);
         }
@@ -52,6 +56,9 @@ namespace School.Api.Controllers.Admins
 
             int result = await _mediator.Send(command);
 
+            BotMessage bot = new BotMessage();
+            await bot.Deleted("School.Api -> Admin");
+
             return Ok(result);
         }
 
@@ -69,6 +76,9 @@ namespace School.Api.Controllers.Admins
         public async ValueTask<IActionResult> UpdateAsync([FromForm] UpdateAdminCommand admin)
         {
             int result = await _mediator.Send(admin);
+
+            BotMessage bot = new BotMessage();
+            await bot.Updated("School.Api -> Admin");
 
             return Ok(result);
         }

@@ -1,3 +1,6 @@
+using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
+
 namespace ApiGetaway
 {
     public class Program
@@ -10,6 +13,10 @@ namespace ApiGetaway
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Configuration.AddJsonFile("ocelot.json");
+            
+            builder.Services.AddOcelot();
+
             WebApplication app = builder.Build();
 
             if (app.Environment.IsDevelopment())
@@ -18,9 +25,11 @@ namespace ApiGetaway
                 app.UseSwaggerUI();
             }
 
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
             app.UseAuthorization();
+
+            app.UseOcelot().Wait();
 
             app.MapControllers();
 

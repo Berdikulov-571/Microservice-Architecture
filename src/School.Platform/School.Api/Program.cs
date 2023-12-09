@@ -3,6 +3,7 @@ using Microsoft.OpenApi.Models;
 using School.DataAccess;
 using School.Service;
 using School.Service.Service.BackGrounds;
+using System.Text;
 using System.Text.Json.Serialization;
 
 namespace School.Api
@@ -23,6 +24,8 @@ namespace School.Api
             builder.Services.AddDataAccess(builder.Configuration);
             builder.Services.AddControllersWithViews()
                 .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
+            builder.Services.AddDataAccess(builder.Configuration);
 
 
             builder.Services.AddAuthentication("Bearer")
