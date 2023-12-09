@@ -25,8 +25,7 @@ namespace University.Api.Controllers.Dedlines
         {
             int result = await _mediator.Send(dedline);
 
-            BotMessage bot = new BotMessage();
-            await bot.Added("University.Api -> Dedline");
+         ;
 
             return Ok(result);
         }
@@ -44,8 +43,6 @@ namespace University.Api.Controllers.Dedlines
         {
             int result = await _mediator.Send(new DeleteDedlineCommand() { DedlineId = deleteId });
 
-            BotMessage bot = new BotMessage();
-            await bot.Deleted("University.Api -> Dedline");
 
             return Ok(result);
         }
@@ -55,8 +52,6 @@ namespace University.Api.Controllers.Dedlines
         {
             int result = await _mediator.Send(dedline);
 
-            BotMessage bot = new BotMessage();
-            await bot.Updated("University.Api -> Dedline");
 
             return Ok(result);
         }
