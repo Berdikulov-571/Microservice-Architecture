@@ -1,4 +1,4 @@
-![Screenshot 2023-12-09 023520](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/db9dbcd4-41bb-4eca-8000-63108b3d2e8a)Assalomu aleykum mening bu loyiham imtihon uchun microservicelar bilan ishlash va o'rgangan yangiliklarimizni projectda qo'llash edi.
+Assalomu aleykum mening bu loyiham imtihon uchun microservicelar bilan ishlash va o'rgangan yangiliklarimizni projectda qo'llash edi.
 Mega imtihon uchun qilish kerak bo'lgan projectlar 4 ta edi: 1.University, 2.School, 3.Cadastre, 4.Jamoat Transporti
 
 ![Screenshot 2023-12-09 021549](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/fb7889d6-85c8-4e3f-ab1a-839ff071ae85)
