@@ -1,4 +1,4 @@
-Assalomu aleykum mening bu loyiham imtihon uchun microservicelar bilan ishlash va o'rgangan yangiliklarimizni projectda qo'llash edi.
+![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/378477af-ffa8-49bb-bae0-52ae31de883c)![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/db8f797e-7590-416e-be52-3c4165f09aaa)![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/675958a3-f56e-44f5-8460-292c01d4c47b)Assalomu aleykum mening bu loyiham imtihon uchun microservicelar bilan ishlash va o'rgangan yangiliklarimizni projectda qo'llash edi.
 Mega imtihon uchun qilish kerak bo'lgan projectlar 4 ta edi: 1.University, 2.School, 3.Cadastre, 4.Jamoat Transporti
 
 ![Screenshot 2023-12-09 021549](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/fb7889d6-85c8-4e3f-ab1a-839ff071ae85)
@@ -51,10 +51,46 @@ Shu bilan bizning Service Layerimiz o'z nihoyasiga yetdi keyingi qism University
 ![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/2b558d9b-47d9-42f2-a7cd-de96f80f9be5)
 
 Birinchi bo'lib GetById ni ishlatishni ko'rib o'tamiz 
+
 ![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/78757fa7-6645-48cc-9ae6-9bded6bd1237)
+
 Get All 
+
 ![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/40a0a202-17f2-4567-9005-feaecc01800a)
+
 Post Async
+
 ![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/d80e678d-9bce-42ed-ad09-bfa80be47fc3)
 
+
 shu kabi mediatR ishlaydi _mediatorga.Send() qilaveramiz bu esa bergan command yoki query bo'yicha uzi topib boradi
+
+Yana bir ajoyib jihatlardan biri biz barcha biz FileServicedan foydalanilganmiz bunda user o'zining imagelarini yuklab uni swaggerda ko'rishi mumkin, bu service qanday ishlaydi? user uzining imagesini post qilganda unga Guid qilib uniue name yaratib beradi -> bu nom image nomi uchun va bazada shu userNing imagePath i saqlanadi rasming haqiqiy shakli esa localda joylashgan bo'ladi hozir buni ham ishlatib ko'rmiz 
+Apilarimiz orasida GetImageNomli api ham mavjud
+
+![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/9b9c28b8-3557-420a-88b8-b0501617f436)
+
+Bu Api ni hozir ishlatib ko'ramiz 
+
+![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/8fc0af9f-1c2f-42df-a3d1-242a0fa22224)
+
+Man ko'rib turganingizdek 3 idlink Studentning rasmini chiqarib berdi 
+
+endi siz bilan buning logikasini ko'rib chiqamiz
+
+![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/05975bba-600b-4e24-80fd-c841404db1fa)
+
+bu imagening upload qilish jarayoni 
+
+![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/9261c293-feac-4547-91be-ed33e3b096be)
+
+bu esa imageni Get qilib olish jarayoni 
+
+controllerga imageni byte[] qilib berib yuboradi Controller esa 
+
+![image](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/420fbd00-e584-4bcc-a163-8848e4a8590c)
+
+shu kabi swaggerga chiqarib beradi.
+
+Shu bilan University.Api ham o'z nihoyasiga yetdi va Projectham o'z nihoyasiga yetdi
+
