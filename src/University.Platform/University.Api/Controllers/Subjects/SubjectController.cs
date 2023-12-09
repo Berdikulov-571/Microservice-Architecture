@@ -27,8 +27,7 @@ namespace University.Api.Controllers.Subjects
         {
             int result = await _mediator.Send(subject);
 
-            BotMessage bot = new BotMessage();
-            await bot.Added("University.Api -> Subject");
+
 
             return Ok(subject);
         }
@@ -46,9 +45,7 @@ namespace University.Api.Controllers.Subjects
         {
             int result = await _mediator.Send(new DeleteSubjectCommand() { SubjectId = subjectId});
 
-            BotMessage bot = new BotMessage();
-            await bot.Deleted("University.Api -> Subject");
-
+   
             return Ok(result);
         }
 
@@ -57,8 +54,6 @@ namespace University.Api.Controllers.Subjects
         {
             int result = await _mediator.Send(subject);
 
-            BotMessage bot = new BotMessage();
-            await bot.Updated("University.Api -> Subject");
 
             return Ok(result);
         }

@@ -25,8 +25,6 @@ namespace University.Api.Controllers.Groups
         {
             int result = await _mediator.Send(group);
 
-            BotMessage bot = new BotMessage();
-            await bot.Added("University.Api -> Group");
 
 
             return Ok(result);
@@ -45,8 +43,6 @@ namespace University.Api.Controllers.Groups
         {
             int result = await _mediator.Send(new DeleteGroupCommand() { GroupId = groupId });
 
-            BotMessage bot = new BotMessage();
-            await bot.Deleted("University.Api -> Group");
 
             return Ok(result);
         }
@@ -55,9 +51,7 @@ namespace University.Api.Controllers.Groups
         public async ValueTask<IActionResult> UpdateAsync(UpdateGroupCommand group)
         {
             int result = await _mediator.Send(group);
-
-            BotMessage bot = new BotMessage();
-            await bot.Updated("University.Api -> Group");
+            
 
 
             return Ok(result);
