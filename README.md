@@ -110,7 +110,7 @@ Transport Database
 
 ![Screenshot 2023-12-09 023520](https://github.com/Berdikulov-571/Exam-Microservice/assets/125897994/02da1b82-103d-42a8-9789-39df26cf953e)
 
-
+Va ApiGetaway ham yozilgan  
 shu ko'rinishda va Globalniy Avtorization qo'shilgan va University Platform uchun sql Serverda Triggerlar qo'llanilgan. shu bilan Documentation o'z nihoyasiga yetdi e'tiboringiz uchun raxmat.
 
 Agar dasturni run qilmoqchi bo'lsangiz.
