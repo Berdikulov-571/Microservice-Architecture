@@ -1,4 +1,5 @@
 ﻿using Autorization.Api.DataContexts;
+using Autorization.Api.Exceptions;
 using Autorization.Api.Interfaces;
 using Autorization.Api.Models;
 using Microsoft.IdentityModel.Tokens;

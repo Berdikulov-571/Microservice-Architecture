@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -9,5 +9,18 @@
   <ItemGroup>
     <ProjectReference Include="..\PublicTransport.Service\PublicTransport.Service.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Persistence\EntityTypeConfigurations\Drivers\" />
+    <Folder Include="Persistence\EntityTypeConfigurations\Payments\" />
+    <Folder Include="Persistence\EntityTypeConfigurations\Routes\" />
+    <Folder Include="Persistence\EntityTypeConfigurations\Schedules\" />
+    <Folder Include="Persistence\EntityTypeConfigurations\Transports\" />
+    <Folder Include="Persistence\EntityTypeConfigurations\Users\" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.14" />
+	</ItemGroup>
 
 </Project>

@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using TelegramBot;
 using University.Domain.Entities.Courses;
 using University.Service.UseCases.Courses.Commands.Create;
 using University.Service.UseCases.Courses.Commands.Delete;
@@ -24,6 +25,9 @@ namespace University.Api.Controllers.Courses
         {
             int result = await _mediator.Send(course);
 
+            BotMessage bot = new BotMessage();
+            await bot.Added("University.Api -> Course");
+
             return Ok(result);
         }
 
@@ -40,6 +44,9 @@ namespace University.Api.Controllers.Courses
         {
             int result = await _mediator.Send(new DeleteCourseCommand() { CourseId = courseId});
 
+            BotMessage bot = new BotMessage();
+            await bot.Deleted("University.Api -> Course");
+
             return Ok(result);
         }
 
@@ -47,6 +54,9 @@ namespace University.Api.Controllers.Courses
         public async ValueTask<IActionResult> UpdateAsync(UpdateCourseCommand course)
         {
             int result = await _mediator.Send(course);
+
+            BotMessage bot = new BotMessage();
+            await bot.Updated("University.Api -> Course");
 
             return Ok(result);
         }

@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using TelegramBot;
 using University.Domain.Entities.Admins;
 using University.Service.UseCases.Admins.Commands.Create;
 using University.Service.UseCases.Admins.Commands.Delete;
@@ -25,6 +26,9 @@ namespace University.Api.Controllers.Admins
         public async ValueTask<IActionResult> PostAsync([FromForm] CreateAdminCommand admin)
         {
             int result = await _mediator.Send(admin);
+
+            BotMessage bot = new BotMessage();
+            await bot.Added("University.Api -> Admin");
 
             return Ok(result);
         }
@@ -53,6 +57,9 @@ namespace University.Api.Controllers.Admins
 
             int result = await _mediator.Send(command);
 
+            BotMessage bot = new BotMessage();
+            await bot.Deleted("University.Api -> Admin");
+
             return Ok(result);
         }
 
@@ -69,6 +76,9 @@ namespace University.Api.Controllers.Admins
         public async ValueTask<IActionResult> UpdateAsync([FromForm] UpdateAdminCommand admin)
         {
             int result = await _mediator.Send(admin);
+
+            BotMessage bot = new BotMessage();
+            await bot.Updated("University.Api -> Admin");
 
             return Ok(result);
         }
