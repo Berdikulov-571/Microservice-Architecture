@@ -26,7 +26,7 @@ namespace PublicTransport.Service.UseCases.Transports.Handlers
             await _context.Transports.AddAsync(transport,cancellationToken);
             int result = await _context.SaveChangesAsync(cancellationToken);
 
-            return result;
+            return result + 1;
         }
     }
 }
