@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+using University.Domain.Exceptions.Subjects;
 using University.Service.Abstractions.DataContexts;
+using University.Service.UseCases.Subjects.Commands.Create;
+using University.Service.UseCases.Subjects.Handlers.Create;
 
 namespace University.Platform.UnitTesting.Commands
 {
@@ -13,23 +15,22 @@ namespace University.Platform.UnitTesting.Commands
         }
 
 
-        //[Fact]
-        //public async Task Create_Subject_Command()
-        //{
-            //// Arrange
-            //var cancellationToken = new CancellationTokenSource().Token;
-            //CreateSubjectCommand command = new CreateSubjectCommand()
-            //{
-            //    Name = name
-            //};
+        public async Task Create_Subject_Command()
+        {
+            // Arrange  
+            var cancellationToken = new CancellationTokenSource().Token;
+            CreateSubjectCommand command = new CreateSubjectCommand()
+            {
+                Name = "Test"
+            };
 
-            //  CreateSubjectCommandHandler handler = new CreateSubjectCommandHandler(_context);
+            CreateSubjectCommandHandler handler = new CreateSubjectCommandHandler(_context);
 
-            //// Act
-            //Action result = async () => await handler.Handle(command, cancellationToken);
+            // Act
+            Action result = async () => await handler.Handle(command, cancellationToken);
 
-            //// Assert
-            //Assert.Throws<SubjectAlreadyExists>(result);
-        //}
+            //Assert
+            Assert.Throws<SubjectAlreadyExists>(result);
+        }
     }
 }
