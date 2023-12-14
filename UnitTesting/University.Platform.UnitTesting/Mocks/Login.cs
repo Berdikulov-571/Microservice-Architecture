@@ -31,8 +31,8 @@ namespace University.Platform.UnitTesting.Mocks
         {
             string email = "bsanjarbek06@gmail.com";
             string password = "sanjarbek2006";
-            
-            string result = _authService.GenerateToken(new Autorization.Api.Models.Login() { Email=email, Password = password });
+
+            string result = _authService.GenerateToken(new Autorization.Api.Models.Login() { Email = email, Password = password });
 
             Assert.NotNull(result);
         }
